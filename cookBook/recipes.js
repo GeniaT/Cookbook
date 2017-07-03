@@ -87,7 +87,7 @@ function fromRecToShoppingUnits() {
       }
 
 
-      function sumIngredientsForShoppingList () {
+      function sumIngredientsForShoppingList() {
         if (totalIngredients[p]) { //if there is such ingredient in the shopping list, add the value of the last ingredient to quantities in shopping list
           // I take the value that is already found in the shopping list (result3[0])
           const re3 = /[0-9]+\.?[0-9]*/gi;

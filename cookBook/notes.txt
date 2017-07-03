@@ -1,0 +1,13 @@
+General:
+  Focus first on english version, the french will be next
+  For french version, check the tbs and ts in ml (might be different)
+
+to foresee:
+  Convert terms from recipe into terms for the shopping list: tablespoon = 20ml for ex. DONE
+  At this point, we need to have the object with the recipes written in "20ml" format instead of "tablespoon" DONE
+  then adapt the total function to separate the numbers (20) from the unit (ml) and sum only if both units for an ingredient from 2 recs are same
+  if not the same, define a common unit for both (ml or l or ...)
+  Focus on one Website and scrap it with python to grab the recipes from it and add them to my page (with its source its ok)
+
+To do next:
+  Deal with additions like "1cup" + "2cups" or "5ml + 15mls" or "1 oignon + 3 oignons"

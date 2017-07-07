@@ -8,7 +8,7 @@
 // 1cup = 250ml
 // Source: http://www.beefandlamb.com.au/How_to/Cooking_beef_and_lamb/Tools_and_Apps/Cooking_times_and_conversion_table
 
-var conversions = {
+var recUnitsInShopUnits = {
   cup: "250ml",
   splash: "3.7ml",
   pinch: "0.36g",
@@ -17,11 +17,13 @@ var conversions = {
   ts: "5ml",
   tsp: "5ml",
   teaspoon: "5ml",
+  teaspoons: "5ml",
   tbs: "15ml",
   tbsp: "15ml",
-  tablespoon: "15ml"
+  tablespoon: "15ml",
+  tablespoons: "15ml"
 }
-var recWithUnits = {
+var recipes = {
   recipe1: {
       name: "Lumpia",
       duration: "30mins",
@@ -32,7 +34,7 @@ var recWithUnits = {
   recipe2: {
       name: "Durum",
       duration: "45mins",
-      ingredients: { beef: "200g", chicken: "150g", salt: "2pinch", peper: "1splash", tomatoes: "8", carots: "2", cheese: "8slices"},      // ingredients : {salt: "1pinch"},
+      ingredients: { beef: "200g", chicken: "150g", salt: "2pinch", peper: "1splash", tomatoes: "8", carots: "2", cheese: "8slices", sodium: "2cup"},
       kcal: "950",
       difficulty: "medium"
     },
@@ -63,40 +65,49 @@ var recWithUnits = {
 
 // Isolate quantity and units to be able to look for conversions
 function fromRecToShoppingUnits() {
-  const nrRecsToSum = Object.keys(recWithUnits).length;
+  const nbRecsToSum = Object.keys(recipes).length;
   const totalIngredients = new Object;
 
-  for (let count = 1; count < nrRecsToSum + 1; count++) {
+  for (let count = 1; count < nbRecsToSum + 1; count++) {
     const recToRead = `recipe${count}`;
-    for (const p in recWithUnits[recToRead].ingredients) {
+    for (const p in recipes[recToRead].ingredients) {
       const re = /([0-9]+\.?\/?[0-9]*)\s?([a-z]+)?/ig;
-      const result = re.exec(recWithUnits[recToRead].ingredients[p]);
-      result[1] === "1/2" ? result[1] = "0.5" : 1;
-      result[1] === "1/3" ? result[1] = "0.33" : 1;
-      result[1] === "2/3" ? result[1] = "0.66" : 1;
-      result[1] === "1/4" ? result[1] = "0.25" : 1;
-      result[1] === "3/4" ? result[1] = "0.75" : 1;
-      result[2] === undefined ? converted = result[1] : 1; //if no unit, no need to convert
-      conversions[result[2]] === undefined ? converted = result[0] : 1; //if no equivalent in conversions var, we keep the initial value & unit
+      const result = re.exec(recipes[recToRead].ingredients[p]);
+      let quantity = result[1];
+      let unit = result[2];
+      let converted;
 
-      // Look for the equivalent unit in conversions var and calculate its value.
+      quantity === "1/2" ? quantity = "0.5"  : 1;
+      quantity === "1/3" ? quantity = "0.33" : 1;
+      quantity === "2/3" ? quantity = "0.66" : 1;
+      quantity === "1/4" ? quantity = "0.25" : 1;
+      quantity === "3/4" ? quantity = "0.75" : 1;
+      quantity === "1/5" ? quantity = "0.2"  : 1;
+      unit === undefined ? converted = quantity : 1;
+      recUnitsInShopUnits[unit] === undefined ? converted = result[0] : 1;
+
       const re2 = /([0-9]+\.?[0-9]*)([a-z]+)/ig;
-      if (conversions[result[2]]) {
-        const resultBis = re2.exec(conversions[result[2]]);
-        var converted = Math.floor((result[1] * resultBis[1])*1000)/1000 + resultBis[2]; //to avoid weird numbers like 11.10000001ml
+      if (recUnitsInShopUnits[unit]) {
+        const result2 = re2.exec(recUnitsInShopUnits[unit]);
+        let quantity2 = result2[1];
+        let unit2 = result2[2];
+        converted = Math.floor((quantity * quantity2)*1000)/1000 + unit2;
       }
 
 
-      function sumIngredientsForShoppingList() {
+      function sumIngredientsForShoppingList () {
         if (totalIngredients[p]) { //if there is such ingredient in the shopping list, add the value of the last ingredient to quantities in shopping list
           // I take the value that is already found in the shopping list (result3[0])
           const re3 = /[0-9]+\.?[0-9]*/gi;
           const result3 = re3.exec(totalIngredients[p]);
+          let quantity3 = Number(result3[0]);
 
           // I take the value from the recent converted to be able to sum both values with the target unit
           const re4 = /([0-9]+\.?[0-9]*)([a-z]*)/gi;
           const result4 = re4.exec(converted);
-          totalIngredients[p] = Number(result3[0]) + Number(result4[1]) + result4[2]; //value from shop list + value from rec list + unit from conversion
+          let quantity4 = Number(result4[1]);
+          let unit4 = result4[2];
+          totalIngredients[p] = quantity3 + quantity4 + unit4; //value from shop list + value from rec list + unit from conversion
 
         } else { //if there is no such ingredient in the shopping list
           totalIngredients[p] = converted;

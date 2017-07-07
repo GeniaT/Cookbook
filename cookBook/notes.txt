@@ -11,3 +11,6 @@ to foresee:
 
 To do next:
   Deal with additions like "1cup" + "2cups" or "5ml + 15mls" or "1 oignon + 3 oignons"
+
+To solve:
+  

@@ -10,10 +10,15 @@
 
 var recUnitsInShopUnits = {
   cup: "250ml",
+  cups: "250ml",
   splash: "3.7ml",
+  splashes: "3.7ml",
   pinch: "0.36g",
+  pinches: "0.36g",
   pound: "500g",
+  pounds: "500g",
   lb: "500g",
+  lbs: "500g",
   ts: "5ml",
   tsp: "5ml",
   teaspoon: "5ml",
@@ -34,7 +39,7 @@ var recipes = {
   recipe2: {
       name: "Durum",
       duration: "45mins",
-      ingredients: { beef: "200g", chicken: "150g", salt: "2pinch", peper: "1splash", tomatoes: "8", carots: "2", cheese: "8slices", sodium: "2cup"},
+      ingredients: { beef: "200g", chicken: "150g", salt: "2pinches", peper: "1splash", tomatoes: "8", carots: "2", cheese: "8slices", sodium: "2cups"},
       kcal: "950",
       difficulty: "medium"
     },
@@ -49,27 +54,39 @@ var recipes = {
   recipe4: {
       name: "tamtam",
       duration: "45mins",
-      ingredients: { turtle: "200g", chicken: "11g", salt: "2pinch", peper: "1splash", tomatoes: "8", carots: "2"},
+      ingredients: { water: "50mls", turtle: "200g", chicken: "11g", salt: "2pinch", peper: "1splash", tomatoes: "8", carots: "2"},
       kcal: "950",
       difficulty: "medium"
         },
   recipe5: {
       name: "Badoo",
       duration: "45mins",
-      ingredients: { bird: "200g", chicken: "150g", salt: "2pinch", peper: "1splash", tomatoes: "8", carots: "2"},
+      ingredients: { water: "100ml", bird: "200g", chicken: "150g", salt: "2pinch", peper: "1splash", tomatoes: "8", carots: "2"},
       kcal: "950",
       difficulty: "medium"
         }
 
 }
 
+var selectedRecipes = new Array();
+
+$(document).ready(function() {
+  $( "#shopList" ).click(function() {
+    $("input:checkbox[name=recipe]:checked").each(function() {
+         selectedRecipes.push($(this).val());
+    });
+    fromRecToShoppingUnits();
+  });
+});
+
 // Isolate quantity and units to be able to look for conversions
 function fromRecToShoppingUnits() {
-  const nbRecsToSum = Object.keys(recipes).length;
+  const nbRecsToSum = selectedRecipes.length;
   const totalIngredients = new Object;
 
-  for (let count = 1; count < nbRecsToSum + 1; count++) {
-    const recToRead = `recipe${count}`;
+  for (let count = 0; count < nbRecsToSum; count++) {
+    const recToRead = selectedRecipes[count];
+
     for (const p in recipes[recToRead].ingredients) {
       const re = /([0-9]+\.?\/?[0-9]*)\s?([a-z]+)?/ig;
       const result = re.exec(recipes[recToRead].ingredients[p]);
@@ -91,7 +108,8 @@ function fromRecToShoppingUnits() {
         const result2 = re2.exec(recUnitsInShopUnits[unit]);
         let quantity2 = result2[1];
         let unit2 = result2[2];
-        converted = Math.floor((quantity * quantity2)*1000)/1000 + unit2;
+
+        converted = Math.floor(quantity * quantity2 * 1000) / 1000 + unit2;
       }
 
 
@@ -114,7 +132,7 @@ function fromRecToShoppingUnits() {
         }
       }
 
-      sumIngredientsForShoppingList();
+      sumIngredientsForShoppingList(totalIngredients[p]);
 
     }
   }
@@ -122,5 +140,3 @@ function fromRecToShoppingUnits() {
 console.log(totalIngredients);
 
 }
-
-fromRecToShoppingUnits();

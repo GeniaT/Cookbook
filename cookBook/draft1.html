@@ -1,0 +1,214 @@
+<!-- To do next:
+keep building the css for the expanded desktop version
+Adding divs in the html, sizing, testing.
+
+Then, the expanded version for Mobile
+and then start unit testing the expansion logic with :target and additional ids
+in html.  -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Homepage</title>
+  <meta charset="UTF-8" name="cookbook">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="draft1.css">
+  <script src="libraries/jquery-3.2.1.js" type="text/javascript"></script>
+</head>
+<body>
+  <section class="recipes">
+    <div class="recipe" id="recipe1">
+      <!-- <div class="inner-container"> -->
+        <img src="images/recImg.jpg">
+        <h2>Lopsum</h2>
+        <div class="time_categories">
+          <div class="time">
+            <p>45mins</p>
+          </div>
+          <div class="categories">
+            <p>Dessert</p>
+            <p>Healthy</p>
+          </div>
+        </div>
+        <div id="expand">
+          <button>Expand</button>
+        </div>
+      <!-- </div> -->
+    </div>
+    <div class="recipe" id="recipe2">
+      <div class="inner-container">
+        <img src="images/recImg2.jpg">
+        <h2>Lopsum</h2>
+        <div class="time_categories">
+          <div class="time">
+            <p>45mins</p>
+          </div>
+          <div class="categories">
+            <p>Dessert</p>
+            <p>Healthy</p>
+          </div>
+        </div>
+        <div id="expand">
+          <button>Expand</button>
+        </div>
+      </div>
+    </div>
+    <div class="recipe" id="recipe3">
+      <div class="inner-container">
+        <img src="images/recImg3.jpg">
+        <h2>Lopsum</h2>
+        <div class="time_categories">
+          <div class="time">
+            <p>45mins</p>
+          </div>
+          <div class="categories">
+            <p>Dessert</p>
+            <p>Healthy</p>
+          </div>
+        </div>
+        <div id="expand">
+          <button>Expand</button>
+        </div>
+      </div>
+    </div>
+    <div class="recipe" id="recipe4">
+      <div class="inner-container">
+        <img src="images/recImg4.jpg">
+        <h2>Lopsum</h2>
+        <div class="time_categories">
+          <div class="time">
+            <p>45mins</p>
+          </div>
+          <div class="categories">
+            <p>Dessert</p>
+            <p>Healthy</p>
+          </div>
+        </div>
+        <div id="expand">
+          <button>Expand</button>
+        </div>
+      </div>
+    </div>
+    <div class="recipe" id="recipe5">
+      <div class="inner-container">
+        <img src="images/recImg5.jpg">
+        <h2>Lopsum</h2>
+        <div class="time_categories">
+          <div class="time">
+            <p>45mins</p>
+          </div>
+          <div class="categories">
+            <p>Dessert</p>
+            <p>Healthy</p>
+          </div>
+        </div>
+        <div id="expand">
+          <button>Expand</button>
+        </div>
+      </div>
+    </div>
+    <div class="recipe" id="recipe6">
+      <div class="inner-container">
+        <img src="images/recImg6.jpg">
+        <h2>Lopsum</h2>
+        <div class="time_categories">
+          <div class="time">
+            <p>45mins</p>
+          </div>
+          <div class="categories">
+            <p>Dessert</p>
+            <p>Healthy</p>
+          </div>
+        </div>
+        <div id="expand">
+          <button>Expand</button>
+        </div>
+      </div>
+    </div>
+    <div class="recipe" id="recipe7">
+      <div class="imgTitleSteps">
+        <div class="imgTimeCat">
+          <div class="imgExp">
+            <img src="images/recImg.jpg">
+          </div>
+          <div class="timeExp">
+            <p>45 mins</p>
+          </div>
+          <div class="catExp">
+            <p>Dessert</p>
+            <p>Healthy</p>
+          </div>
+        </div>
+        <div class="titleSteps">
+          <div>
+            <h2>Recipe Name</h2>
+          </div>
+          <div class="steps">
+            <h3>Description and Steps</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent auctor neque eget suscipit dictum. Quisque maximus efficitur massa, et efficitur neque eleifend et. Nulla gravida dignissim dolor, vel pharetra velit congue et. Nullam eu tortor est. Ut ligula urna, auctor eget diam vitae, rhoncus cursus massa. Donec accumsan tempus ex vel pretium. Vestibulum tincidunt ex ac tellus bibendum, nec pretium nunc vulputate. Pellentesque iaculis, mi non finibus sagittis, libero nisl volutpat nulla, ta metus.</p>
+          </div>
+        </div>
+      </div>
+      <div class="recipe_ingredients">
+        <h3>Ingredients</h2>
+        <div class="ingredientsCols">
+          <div class="ingredientsCol1">
+            <ul>
+              <li>Ingredient 1</li>
+              <li>Ingredient 2</li>
+              <li>Ingredient 3</li>
+              <li>Ingredient 4</li>
+              <li>Ingredient 5</li>
+            </ul>
+          </div>
+          <div class="ingredientsCol2">
+            <ul>
+              <li>Ingredient 1</li>
+              <li>Ingredient 2</li>
+              <li>Ingredient 3</li>
+              <li>Ingredient 4</li>
+              <li>Ingredient 5</li>
+            </ul>
+          </div>
+          <div class="ingredientsCol3">
+            <ul>
+              <li>Ingredient 1</li>
+              <li>Ingredient 2</li>
+              <li>Ingredient 3</li>
+              <li>Ingredient 4</li>
+              <li>Ingredient 5</li>
+            </ul>
+          </div>
+          <div class="ingredientsCol4">
+            <ul>
+              <li>Ingredient 1</li>
+              <li>Ingredient 2</li>
+              <li>Ingredient 3</li>
+              <li>Ingredient 4</li>
+              <li>Ingredient 5</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div id="collapse">
+        <button>Collapse</button>
+      </div>
+    </div>
+  </section>
+  <section class="list">
+    <h1>Shopping List</h1>
+    <div class="choosenRecs">
+      <!--  -->
+    </div>
+    <div id="create_update">
+      <button>Create/Update quantities</button>
+    </div>
+    <div class="shopping_ingredients">
+      <!--  -->
+    </div>
+    <div id="send">
+      <button>Send by Email</button>
+    </div>
+
+  </section>
+
+</body>

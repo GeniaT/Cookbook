@@ -1,0 +1,182 @@
+body {
+  height:100%;
+  width: 100%;
+}
+
+/*------------------Main Content-------------------*/
+.recipes, .list {
+  border: solid 1px black;
+}
+
+.recipes {
+  display:inline-flex;
+  flex-wrap:wrap;
+  justify-content: space-around;
+  width: 70%;
+}
+
+.list {
+  width: 20%;
+  min-width:200px;
+  height:700px;
+  position:fixed;
+  display:inline-block;
+}
+
+.recipe {
+  height: 360px;
+  width: 250px;
+  border: solid 1px blue;
+  margin: 30px;
+}
+
+img {
+  width: 100%;
+  height: 166px;
+}
+
+h2 {
+  background-color: pink;
+  text-align:center;
+}
+
+.time_categories {
+  border:solid 1px green;
+  display:flex;
+  align-items: center;
+  height:100px;
+}
+
+.time, .categories {
+  width:50%;
+  height:100%;
+  text-align:center;
+  border:1px solid orange;
+}
+
+
+.time > p {
+  padding-top: 25px;
+  font-size: 20px;
+  font-weight:bold;
+}
+
+.time {
+  background-image: url('images/clock.jpg');
+  background-size: 100% 100%;
+}
+
+.categories {
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#expand > button {
+  width:100%;
+}
+/*---------------------------expanded version desktop-------------------*/
+.imgTitleSteps, .recipe_ingredients {
+  width: 100%;
+  border: 1px solid green;
+}
+
+.imgTitleSteps {
+  height: 60%;
+}
+.imgTimeCat {
+  float:left;
+  width:40%;
+  height:100%;
+  border: 1px solid pink;
+}
+.titleSteps {
+  float:right;
+  width:55%;
+  height:100%;
+  border: 1px solid pink;
+}
+
+.recipe_ingredients {
+  height: 35%;
+  display:block;
+}
+
+.ingredientsCols {
+  display:flex;
+  justify-content: space-around;
+  align-items: center;
+  height:70%;
+  border: 1px orange solid;
+}
+
+.timeExp, .catExp {
+  display:inline-block;
+  width:50%;
+  height:35%;
+}
+
+.timeExp {
+  background-image: url('images/clock.jpg');
+  background-size: 100% 100%;
+}
+.catExp {
+  float: right;
+  text-align: center;
+  padding-top: 15px;
+}
+
+.timeExp > p {
+  padding-top: 25px;
+  font-size: 20px;
+  font-weight:bold;
+  text-align: center;
+}
+
+ #collapse > button {
+   width: 100%;
+ }
+#recipe7 {
+  min-width:620px;
+  width: 75%;
+  height: 500px;
+}
+
+/*-------------------------Mobile version-------------------*/
+@media only screen and (max-width: 600px) {
+    body {
+      display:flex;
+      flex-direction:column;
+    }
+    .recipes, .list {
+      display:block;
+      position:static;
+      margin:auto;
+    }
+    .list {
+      width:70%;
+    }
+  /*-----------------------Expanded version for mobile-------- */
+  .imgTimeCat, .titleSteps, .recipe_ingredients {
+    /*display:inline-block;
+    width:250px;
+    margin:auto;*/
+  }
+}
+/*------------------Shopping list Content-------------------*/
+.choosenRecs, .shopping_ingredients {
+  width: 70%;
+  border:1px solid black;
+  margin: auto;
+}
+
+.choosenRecs {
+    height: 100px;
+}
+.shopping_ingredients {
+    height: 300px;
+}
+
+#create_update, #send, h1 {
+  text-align: center;
+}

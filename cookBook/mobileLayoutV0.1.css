@@ -1,0 +1,74 @@
+/*This layout is mobile first*/
+body {
+  height: 100%;
+  width: 100%;
+}
+
+
+/*--------Recipes display - mobile first-------------*/
+.recipes, .list {
+  display: flex;
+  flex-direction: column; /* to center in column, use align items, in row, use justify content*/
+  justify-content: space-around;
+  align-items: center;
+}
+.recipes {
+  height:auto;
+  border: 2px solid black;
+}
+.recipe {
+  height: auto;
+  width: 250px;
+  border: solid 1px blue;
+  margin: 10px;
+  cursor:pointer;
+}
+
+.selected { /*temporary*/
+  background-color: yellow;
+}
+h2, .ingredients > p {
+  text-align: center;
+}
+img, button {
+  width:100%;
+}
+.time_categories {
+  display:flex;
+  align-items: center;
+}
+.time, .categories {
+  width: 50%;
+  text-align: center;
+}
+.collapsed > .description, .collapsed > .recipe_ingredients {
+  display: none;
+}
+
+/*---------Shopping list display - mobile first-----------*/
+.list {
+  margin:auto;
+  height:auto;
+  width: 250px;
+  border: 2px solid orange;
+}
+.shopping_ingredients, .choosenRecs {
+  display:flex;
+  flex-direction: column;
+  align-items:center;
+  width:100%;
+}
+.recipe_name, .ingredient_name {
+  width: 70%;
+  border: 1px pink solid;
+}
+.delete_icon, .ingredient_quantity {
+  width: 25%;
+  border: 1px pink solid;
+}
+.ingredients_row, .selectedRec_row {
+  display:flex;
+  width:90%;
+  justify-content: space-around;
+  margin:5px;
+}

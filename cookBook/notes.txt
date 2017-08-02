@@ -3,13 +3,23 @@ General:
   For french version, check the tbs and ts in ml (might be different)
 
 to foresee:
-  Sum only if both units for an ingredient from 2 recs are same
-  if not the same, define a common unit for both (ml or l or ...)
-  Focus on one Website and scrap it with python to grab the recipes from it and add them to my page (with its source its ok)
-  Think about a function and Data Structure to distinguish singular and plurals. see to implement maybe pluralize.js/adapt it to avoid
-  3 tomato & 8 tomatoes in the shopping list.
-
+  JS:
+    Sum only if both units for an ingredient from 2 recs are same
+    if not the same, define a common unit for both (ml or l or ...)
+    Think about a function and Data Structure to distinguish singular and plurals. see to implement maybe pluralize.js/adapt it to avoid
+    3 tomato & 8 tomatoes in the shopping list.
+    In the same page, to allow selecions from multiple packs of recipes, create a bigger html page and play with display:none
+  Edge Cases:
+    When clicking on "create/update", check if there are recipes selected. If not, msg the user
 To do next:
-
-
+  V0.2:
+    Mobile first: common html for expanded and collapsed recipe. DONE
+    Some Divs are hidden in the collapsed recipes (Use as much as possible flexbox) DONE
+    Don't go into the detailed css of the inner divs. DONE
+    DEV and UT of shopping list alimentation
+    link the array of selected recipes to the conversion program
+    Go more in some details of js (check for bugs)
+    Start the tablet/desktop version by only working with additional css (html, js remains the same)
+    start tablet then desktop with the same html and same main div css.
+    Once the 3 formats are ok, add the detailed css and inner boxes.
 To solve:

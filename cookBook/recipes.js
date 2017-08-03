@@ -74,6 +74,7 @@ $(document).ready(function() {
   $( "#shopList" ).click(function() {
     $("input:checkbox[name=recipe]:checked").each(function() {
          selectedRecipes.push($(this).val());
+         console.log(selectedRecipes);
     });
     fromRecToShoppingUnits();
   });
@@ -136,7 +137,5 @@ function fromRecToShoppingUnits() {
 
     }
   }
-
 console.log(totalIngredients);
-
 }

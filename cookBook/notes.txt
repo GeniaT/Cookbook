@@ -9,17 +9,20 @@ to foresee:
     Think about a function and Data Structure to distinguish singular and plurals. see to implement maybe pluralize.js/adapt it to avoid
     3 tomato & 8 tomatoes in the shopping list.
     In the same page, to allow selecions from multiple packs of recipes, create a bigger html page and play with display:none
-  Edge Cases:
-    When clicking on "create/update", check if there are recipes selected. If not, msg the user
+
 To do next:
   V0.2:
     Mobile first: common html for expanded and collapsed recipe. DONE
     Some Divs are hidden in the collapsed recipes (Use as much as possible flexbox) DONE
     Don't go into the detailed css of the inner divs. DONE
     DEV and UT of shopping list alimentation
-    link the array of selected recipes to the conversion program
+      Update selected/unselected recipes from shopping list div DONE
+      Create an object as the output from recipe.js and manipulate the shopping list DOM
+    link the array of selected recipes to the conversion program DONE
+
     Go more in some details of js (check for bugs)
+      Add functionality for sending via mail the shop list
+      add a reset function when create/update is clicked
+
     Start the tablet/desktop version by only working with additional css (html, js remains the same)
-    start tablet then desktop with the same html and same main div css.
     Once the 3 formats are ok, add the detailed css and inner boxes.
-To solve:

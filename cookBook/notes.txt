@@ -15,14 +15,24 @@ To do next:
     Mobile first: common html for expanded and collapsed recipe. DONE
     Some Divs are hidden in the collapsed recipes (Use as much as possible flexbox) DONE
     Don't go into the detailed css of the inner divs. DONE
-    DEV and UT of shopping list alimentation
+    DEV and UT of shopping list alimentation DONE
       Update selected/unselected recipes from shopping list div DONE
       Create an object as the output from recipe.js and manipulate the shopping list DOM
     link the array of selected recipes to the conversion program DONE
 
     Go more in some details of js (check for bugs)
+      solve order of recipes when one is expanded. (by format)
       Add functionality for sending via mail the shop list
       add a reset function when create/update is clicked
+      Add scroll bar if the number of ingredients from shop list exceeds the page height
+      adding some padding here and there.
+      Add an ancrage for the expanded recipe so the user sees it (if no other solution, ask of SO first)
 
-    Start the tablet/desktop version by only working with additional css (html, js remains the same)
+    Start the tablet/desktop version by only working with additional css (html, js remains the same) DONE
+
+    Add a js rule to expand only only recipe at a time: if a second is expanded, the last one is collapsed
+      + update the classes and css of collapsed/selected items
     Once the 3 formats are ok, add the detailed css and inner boxes.
+
+To solve:
+  Selection of rec 2/3/5 = wrong peper quantities : 11,000000001ml (add math floor, round?)

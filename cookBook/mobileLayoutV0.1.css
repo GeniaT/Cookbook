@@ -24,12 +24,16 @@ body {
   cursor:pointer;
 }
 
-.selected { /*temporary*/
+.selected {
   background-color: yellow;
 }
 h2, .ingredients > p {
   text-align: center;
 }
+.ingredients > p {
+  margin: 2px;
+}
+
 img, button {
   width:100%;
 }
@@ -72,3 +76,75 @@ img, button {
   justify-content: space-around;
   margin:5px;
 }
+
+
+/*------------One recipe per line and shopping list as sidebar----------------*/
+@media only screen and (max-width: 1120px) and (min-width: 800px)  {
+  body {
+    border:3px solid purple;
+  }
+  .recipes {
+    display:inline-block;
+    margin-left: 20%;
+  }
+  .list {
+    position:fixed;
+    display:inline-block;
+    margin-left: 10%;
+  }
+  .list > h1 {
+    text-align: center;
+  }
+}
+
+/*-------------Multiple recipes per line + shopping list as sidebar-----------*/
+@media only screen and (min-width: 1121px) {
+  .recipes {
+    flex-direction: row;
+    display:inline-flex;
+    flex-wrap:wrap;
+    justify-content: space-around;
+    width: 70%;
+  }
+  .list {
+    display:inline-block;
+    position:fixed;
+    width: 20%;
+    min-width:200px;
+    height:700px;
+  }
+
+  .expanded {
+    width:100%;
+  }
+  .expanded > .recImg, .expanded > .time_categories {
+    width:35%;
+  }
+  .expanded > h2 {
+    width:65%;
+    float:right;
+  }
+  .expanded > .description {
+    width:60%;
+    margin-top: -180px; /*not perfect but ok for the layout*/
+    float:right;
+  }
+  .expanded > .recipe_ingredients {
+    clear:both;
+  }
+  .expanded > .collapse {
+    margin:auto;
+    width: 55%;
+  }
+  .expanded p {
+    /*text-align: center;*/
+    display:inline-block;
+  }
+  /*Not perfect but make the expanded recipe go first. test of the rearrange all divs properly later*/
+  #recipe1.collapsed {order:1;}
+  #recipe2.collapsed {order:2;}
+  #recipe3.collapsed {order:3;}
+  #recipe4.collapsed {order:4;}
+  #recipe5.collapsed {order:5;}
+  #recipe6.collapsed {order:6;}
+  #recipe7.collapsed {order:7;}

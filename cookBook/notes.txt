@@ -1,38 +1,31 @@
-General:
-  Focus first on english version, the french will be next
-  For french version, check the tbs and ts in ml (might be different)
-
-to foresee:
-  JS:
+JS:
     Sum only if both units for an ingredient from 2 recs are same
     if not the same, define a common unit for both (ml or l or ...)
     Think about a function and Data Structure to distinguish singular and plurals. see to implement maybe pluralize.js/adapt it to avoid
     3 tomato & 8 tomatoes in the shopping list.
     In the same page, to allow selecions from multiple packs of recipes, create a bigger html page and play with display:none
 
-To do next:
-  V0.2:
-    Mobile first: common html for expanded and collapsed recipe. DONE
-    Some Divs are hidden in the collapsed recipes (Use as much as possible flexbox) DONE
-    Don't go into the detailed css of the inner divs. DONE
-    DEV and UT of shopping list alimentation DONE
-      Update selected/unselected recipes from shopping list div DONE
-      Create an object as the output from recipe.js and manipulate the shopping list DOM
-    link the array of selected recipes to the conversion program DONE
+DONE:
+  Mobile first: common html for expanded and collapsed recipe. DONE
+  Some Divs are hidden in the collapsed recipes (Use as much as possible flexbox) DONE
+  Don't go into the detailed css of the inner divs. DONE
+  DEV and UT of shopping list alimentation DONE
+  Update selected/unselected recipes from shopping list div DONE
+  Create an object as the output from recipe.js and manipulate the shopping list DOM
+  link the array of selected recipes to the conversion program DONE
+  Add a js rule to expand only only recipe at a time: if a second is expanded, the last one is collapsed DONE
+    + update the classes and css of collapsed/selected items DONE
+  Start the tablet/desktop version by only working with additional css (html, js remains the same) DONE
+  solve order of recipes when one is expanded. (by format) DONE
+  To solve:
+    Selection of rec 2/3/5 = wrong peper quantities : 11,000000001ml (add math floor, round?) DONE
+    add a reset function when create/update is clicked DONE
+  See how to declare a click event on a non existent yet div (delete_icon) DONE
+  add js function for removing a recipe from the shop list DONE
 
-    Go more in some details of js (check for bugs)
-      solve order of recipes when one is expanded. (by format)
-      Add functionality for sending via mail the shop list
-      add a reset function when create/update is clicked
+
+Go more in some details of js (check for bugs)
       Add scroll bar if the number of ingredients from shop list exceeds the page height
-      adding some padding here and there.
-      Add an ancrage for the expanded recipe so the user sees it (if no other solution, ask of SO first)
-
-    Start the tablet/desktop version by only working with additional css (html, js remains the same) DONE
-
-    Add a js rule to expand only only recipe at a time: if a second is expanded, the last one is collapsed
-      + update the classes and css of collapsed/selected items
-    Once the 3 formats are ok, add the detailed css and inner boxes.
-
-To solve:
-  Selection of rec 2/3/5 = wrong peper quantities : 11,000000001ml (add math floor, round?)
+      test and refactor the code
+      Add something for the user to go to the bottom on mobile via a link of button on each recipe.
+        Maybe trigger the calculus + move the user to the shopping list display is same time (1click instead of 1)

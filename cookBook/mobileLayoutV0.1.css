@@ -1,9 +1,10 @@
-/*This layout is mobile first*/
 body {
   height: 100%;
   width: 100%;
+  font-family: "Candara","Optima","sans-serif";
+  margin: auto;
+  background-color: #fcfbe8;
 }
-
 
 /*--------Recipes display - mobile first-------------*/
 .recipes, .list {
@@ -14,18 +15,21 @@ body {
 }
 .recipes {
   height:auto;
-  border: 2px solid black;
 }
 .recipe {
-  height: auto;
+  height: auto 1s;
   width: 250px;
-  border: solid 1px blue;
+  border-radius: 0.5em;
   margin: 10px;
   cursor:pointer;
+  background-color: #FDC975;
 }
 
 .selected {
-  background-color: yellow;
+  border: 5px solid #F18D9E;
+}
+.description,.recipe_ingredients > h3 {
+  margin-left: 25px;
 }
 h2, .ingredients > p {
   text-align: center;
@@ -33,9 +37,13 @@ h2, .ingredients > p {
 .ingredients > p {
   margin: 2px;
 }
-
 img, button {
   width:100%;
+  border-radius: 0.2em;
+}
+button {
+  background-color: #fcfbe8;
+  height:2em;
 }
 .time_categories {
   display:flex;
@@ -54,7 +62,9 @@ img, button {
   margin:auto;
   height:auto;
   width: 250px;
-  border: 2px solid orange;
+  margin-top: 0.5em;
+  border-radius: 0.5em;
+  background-color: #F18D9E;
 }
 .shopping_ingredients, .choosenRecs {
   display:flex;
@@ -62,13 +72,14 @@ img, button {
   align-items:center;
   width:100%;
 }
+.shopping_ingredients {
+  padding-top: 2em;
+}
 .recipe_name, .ingredient_name {
   width: 70%;
-  border: 1px pink solid;
 }
 .delete_icon, .ingredient_quantity {
   width: 25%;
-  border: 1px pink solid;
 }
 .ingredients_row, .selectedRec_row {
   display:flex;
@@ -76,13 +87,22 @@ img, button {
   justify-content: space-around;
   margin:5px;
 }
+.delete_icon {
+  text-align: center;
+}
+#create_update {
+  padding-top: 0.5em;
+  width:100%;
+}
+#quote {
+  font-size: 20px;
+  text-align: center;
+  width:95%;
+}
 
 
 /*------------One recipe per line and shopping list as sidebar----------------*/
 @media only screen and (max-width: 1120px) and (min-width: 800px)  {
-  body {
-    border:3px solid purple;
-  }
   .recipes {
     display:inline-block;
     margin-left: 20%;
@@ -106,12 +126,19 @@ img, button {
     justify-content: space-around;
     width: 70%;
   }
+  .ingredients, .recipe_ingredients > h3 {
+    margin-left: 25px;
+  }
   .list {
     display:inline-block;
     position:fixed;
     width: 20%;
     min-width:200px;
-    height:700px;
+    height:auto;
+    min-height:300px;
+  }
+  .list > h1 {
+    text-align: center;
   }
 
   .expanded {
@@ -137,14 +164,42 @@ img, button {
     width: 55%;
   }
   .expanded p {
-    /*text-align: center;*/
     display:inline-block;
   }
-  /*Not perfect but make the expanded recipe go first. test of the rearrange all divs properly later*/
-  #recipe1.collapsed {order:1;}
-  #recipe2.collapsed {order:2;}
-  #recipe3.collapsed {order:3;}
-  #recipe4.collapsed {order:4;}
-  #recipe5.collapsed {order:5;}
-  #recipe6.collapsed {order:6;}
-  #recipe7.collapsed {order:7;}
+
+  div#recipe2.expanded {
+    order:1!important;
+  }
+  div#recipe3.expanded {
+    order: 6!important;
+  }
+  div#recipe4.expanded {
+    order: 5!important;
+  }
+  div#recipe6.expanded {
+    order: 8!important;
+  }
+  #recipe1  { order: 3; }
+  #recipe2  { order: 4; }
+  #recipe3  { order: 6; }
+  #recipe4  { order: 7; }
+  #recipe5  { order: 9; }
+  #recipe6  { order: 10; }
+  #recipe7  { order: 12; }
+}
+
+@media only screen and (min-width: 1183px) {
+  div#recipe5.expanded, div#recipe6.expanded {
+    order: 6!important;
+  }
+  div#recipe2.expanded,div#recipe3.expanded {
+    order: 1!important;
+  }
+  #recipe1  { order: 3; }
+  #recipe2  { order: 4; }
+  #recipe3  { order: 5; }
+  #recipe4  { order: 9; }
+  #recipe5  { order: 10; }
+  #recipe6  { order: 11; }
+  #recipe7  { order: 12; }
+}

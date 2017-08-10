@@ -1,5 +1,3 @@
-// To do next:
-
 // global variables
 const recUnitsInShopUnits = {
   cup: "250ml",
@@ -22,6 +20,57 @@ const recUnitsInShopUnits = {
   tablespoons: "15ml"
 }
 const recipes = {
+  // 7 recipes for test purpose:
+  // recipe1: {
+  //     name: "Lumpia",
+  //     duration: "30mins",
+  //     ingredients: { chicken: "300g", salt: "1pinch", tomatoes: "3", paprika: "1ts", peper:"3splash", sodium:"1/4cup"},
+  //     kcal: "650",
+  //     difficulty: "easy"
+  //   },
+  // recipe2: {
+  //     name: "Durum",
+  //     duration: "45mins",
+  //     ingredients: { beef: "200g", chicken: "150g", salt: "2pinches", peper: "1splash", tomatoes: "8", carots: "2", cheese: "8slices", sodium: "2cups"},
+  //     kcal: "950",
+  //     difficulty: "medium"
+  //   },
+  // recipe3: {
+  //     name: "Paki",
+  //     duration: "45mins",
+  //     ingredients: { goat: "200g", chicken: "150g", salt: "2pinch", peper: "1splash", tomatoes: "8", carots: "2",
+  //      celeri: "3", nutella: "3tbsp", caramba: "2cup", cheese: "2slices"},
+  //     kcal: "950",
+  //     difficulty: "medium"
+  //     },
+  // recipe4: {
+  //     name: "tamtam",
+  //     duration: "45mins",
+  //     ingredients: { water: "50mls", turtle: "200g", chicken: "11g", salt: "2pinch", peper: "1splash", tomatoes: "8", carots: "2"},
+  //     kcal: "950",
+  //     difficulty: "medium"
+  //       },
+  // recipe5: {
+  //     name: "Rampooom",
+  //     duration: "45mins",
+  //     ingredients: { water: "50mls", turtle: "200g", chicken: "11g", salt: "2pinch", peper: "1splash", tomatoes: "8", carots: "2"},
+  //     kcal: "950",
+  //     difficulty: "medium"
+  //       },
+  // recipe6: {
+  //     name: "tamtam",
+  //     duration: "45mins",
+  //     ingredients: { water: "50mls", turtle: "200g", chicken: "11g", salt: "2pinch", peper: "1splash", tomatoes: "8", carots: "2"},
+  //     kcal: "950",
+  //     difficulty: "medium"
+  //       },
+  // recipe7: {
+  //     name: "Badoo",
+  //     duration: "45mins",
+  //     ingredients: { water: "100ml", bird: "200g", chicken: "150g", salt: "2pinch", peper: "1splash", tomatoes: "8", carots: "2"},
+  //     kcal: "950",
+  //     difficulty: "medium"
+  //       }
   recipe1: {
       name: "Lumpia",
       duration: "30mins",
@@ -74,7 +123,7 @@ const recipes = {
         }
 
 }
-const selectedRecipes = new Array();
+let selectedRecipes = new Array();
 let objToShopList = new Object;
 
 // functions
@@ -108,6 +157,7 @@ function fromRecToShoppingUnits() {
         let unit2 = result2[2];
 
         converted = Math.floor(quantity * quantity2 * 1000) / 1000 + unit2;
+        // console.log(converted);
       }
 
       function sumIngredientsForShoppingList () {
@@ -122,8 +172,7 @@ function fromRecToShoppingUnits() {
           const result4 = re4.exec(converted);
           let quantity4 = Number(result4[1]);
           let unit4 = result4[2];
-          totalIngredients[p] = quantity3 + quantity4 + unit4; //value from shop list + value from rec list + unit from conversion
-
+          totalIngredients[p] = Math.floor((quantity3 + quantity4)*1000) / 1000 + unit4; //value from shop list + value from rec list + unit from conversion
         } else { //if there is no such ingredient in the shopping list
           totalIngredients[p] = converted;
         }
@@ -138,7 +187,8 @@ function fromRecToShoppingUnits() {
 }
 
 function addSelectedRecToList(recipeName) {
-  const htmlToAdd = '<div class="selectedRec_row"><div class="recipe_name">'+ recipeName +'</div><div class="delete_icon">Icon</div></div>';
+  const htmlToAdd = '<div class="selectedRec_row"><div class="recipe_name">'+
+   recipeName +'</div><i class="delete_icon fa fa-times fa-lg" aria-hidden="true"></i></div>';
   $('.choosenRecs').append(htmlToAdd);
 }
 
@@ -146,32 +196,68 @@ function removeUnselectedRecFromList(recipeName) {
   $('.selectedRec_row:contains("' + recipeName + '")').remove();
 }
 
+function resetShoppingList() {
+  objToShopList = {};
+  $('.shopping_ingredients').html("");
+}
+
+function shopListHTML_update() {
+  let time = 50;
+  for (const ingredient in objToShopList) {
+    setTimeout(function() {
+      const htmlToAdd = '<div class="ingredients_row"><div class="ingredient_name">' + ingredient +
+      '</div><div class="ingredient_quantity">' + objToShopList[ingredient] + '</div></div>';
+      $('.shopping_ingredients').append(htmlToAdd);
+
+    }, time+=50);
+  }
+}
 
 // EVENTS HANDLERS - expand/collapse buttons
 $('.recipe').on("click", '.expand', function(e) {
+  //one recipe is expanded at a time:
+  $('.recipe .collapse').removeClass("collapse").addClass("expand")
+    .html('<button><i class="fa fa-expand fa-lg" aria-hidden="true"></i> Expand</button>');
+  $('.recipe.expanded').removeClass("expanded").addClass("collapsed");
+
   e.stopPropagation();
   $(this).removeClass("expand").addClass("collapse");
   $(this).parent().removeClass("collapsed").addClass("expanded");
-  $(this).html('<button>Collapse!</button>');
+  $(this).html('<button><i class="fa fa-compress fa-lg" aria-hidden="true"></i> Collapse</button>');
 });
 
 $('.recipe').on("click", '.collapse', function(e) {
   e.stopPropagation();
   $(this).removeClass("collapse").addClass("expand");
   $(this).parent().removeClass("expanded").addClass("collapsed");
-  $(this).html('<button>Expand!</button>');
+  $(this).html('<button><i class="fa fa-expand fa-lg" aria-hidden="true"></i> Expand</button>');
+});
+
+$('.choosenRecs').on("click", '.delete_icon', function() {
+  const recName = $(this).parent().find(".recipe_name").text();
+  const recId = $('.recName:contains("' + recName + '")').parent().attr('id');
+
+  $(this).closest('.selectedRec_row').remove();
+  $('.recName:contains("' + recName + '")').parent().removeClass("selected");
+  selectedRecipes.splice(selectedRecipes.indexOf(recId),1);
+
+  if ($('.ingredient_name').text() !== "") {
+    resetShoppingList();
+    fromRecToShoppingUnits();
+    shopListHTML_update();
+  }
 });
 
 $('#create_update').on("click", function() {
   if (selectedRecipes.length === 0) {
     console.log("please select a recipe");
+    resetShoppingList();
   } else {
-    fromRecToShoppingUnits();
-    for (const ingredient in objToShopList) {
-      const htmlToAdd = '<div class="ingredients_row"><div class="ingredient_name">' + ingredient +
-      '</div><div class="ingredient_quantity">' + objToShopList[ingredient] + '</div></div>';
-      $('.shopping_ingredients').append(htmlToAdd);
+    if ($('.ingredient_name').text() !== "") {
+      resetShoppingList();
     }
+    fromRecToShoppingUnits();
+    shopListHTML_update();
   }
 });
 

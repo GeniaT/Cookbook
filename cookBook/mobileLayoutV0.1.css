@@ -68,6 +68,8 @@ button {
   margin-top: 0.5em;
   border-radius: 0.5em;
   background-color: #F18D9E;
+  max-height: 95vh;
+  overflow: auto;
 }
 .shopping_ingredients, .choosenRecs {
   display:flex;
@@ -77,6 +79,7 @@ button {
 }
 .shopping_ingredients {
   padding-top: 2em;
+  height:auto;
 }
 .recipe_name, .ingredient_name {
   width: 70%;

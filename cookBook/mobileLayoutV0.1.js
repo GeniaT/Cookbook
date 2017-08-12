@@ -2,10 +2,18 @@
 const recUnitsInShopUnits = {
   cup: "250ml",
   cups: "250ml",
+  c: "250ml",
+  oz: "30ml",
+  ounce: "30ml",
+  ounces: "30ml",
   splash: "3.7ml",
   splashes: "3.7ml",
   pinch: "0.36g",
   pinches: "0.36g",
+  pint: "500ml",
+  pints: "500ml",
+  pt: "500ml",
+  pts: "500ml",
   pound: "500g",
   pounds: "500g",
   lb: "500g",
@@ -72,52 +80,51 @@ const recipes = {
   //     difficulty: "medium"
   //       }
   recipe1: {
-      name: "Lumpia",
-      duration: "30mins",
-      ingredients: { chicken: "300g", salt: "1pinch", tomatoes: "3", paprika: "1ts", peper:"3splash", sodium:"1/4cup"},
+      name: "Baked Alaska",
+      duration: "45mins",
+      ingredients: { "lemon sorbet": "1/2 c", "ladyfinger cookies": "8", "rippled ice cream or gelato": "3 pt", "large egg whites": "6", "granulated sugar":"3/2 c", blowtorch:"1"},
       kcal: "650",
       difficulty: "easy"
     },
   recipe2: {
-      name: "Durum",
-      duration: "45mins",
-      ingredients: { beef: "200g", chicken: "150g", salt: "2pinches", peper: "1splash", tomatoes: "8", carots: "2", cheese: "8slices", sodium: "2cups"},
+      name: "Chocolate Cupcakes",
+      duration: "55mins",
+      ingredients: { "sticks butter": "2", sugar: "3/2 c.", "unsweetened cocoa powder": "2/3 c", "baking powder": "1 tsp", "baking soda": "1/2 tsp", salt: "1/4 tsp", eggs: "2", milk: "1 c", "vanilla extract": "2 tsp", "all-purpose flour": "5/2 c", "heavy cream": "3/4 c", "bittersweet chocolate": "8 oz", "white chocolate": "3 oz"},
       kcal: "950",
       difficulty: "medium"
     },
   recipe3: {
-      name: "Paki",
-      duration: "45mins",
-      ingredients: { goat: "200g", chicken: "150g", salt: "2pinch", peper: "1splash", tomatoes: "8", carots: "2",
-       celeri: "3", nutella: "3tbsp", caramba: "2cup", cheese: "2slices"},
+      name: "Bailey's Cheesecake",
+      duration: "7:25hours",
+      ingredients: {"melted butter": "4 tbsp", "Oreo cookies": "26", "Kosher salt": "1 pinch", "cream cheese bars": "32 oz", "sugar": "3/2 c", "cornstarch": "1/4 c", "eggs": "4", "Baileys Irish Cream": "2/3 c", "pure vanilla extract": "1 tsp", "heavy cream": "2/3 c", "semisweet chocolate chips":"2 c" },
       kcal: "950",
       difficulty: "medium"
       },
   recipe4: {
-      name: "tamtam",
-      duration: "45mins",
-      ingredients: { water: "50mls", turtle: "200g", chicken: "11g", salt: "2pinch", peper: "1splash", tomatoes: "8", carots: "2"},
+      name: "Key Lime Cakes",
+      duration: "3:35hours",
+      ingredients: { "regular limes": "2", "cream cheese": "4 oz", "sweetened condensed milk": "1/2 c", "heavy cream": "1 c", "thin gingersnap cookies": "60"},
       kcal: "950",
       difficulty: "medium"
         },
   recipe5: {
-      name: "Rampooom",
-      duration: "45mins",
-      ingredients: { water: "50mls", turtle: "200g", chicken: "11g", salt: "2pinch", peper: "1splash", tomatoes: "8", carots: "2"},
+      name: "Patriotic Ice Pops",
+      duration: "15mins",
+      ingredients: {blueberries: "1 pint", "vanilla ice cream": "1/4", "red raspberry sorbet": "2 pints", "Star sprinkles": "1", "large wooden craft sticks": "10"},
       kcal: "950",
       difficulty: "medium"
         },
   recipe6: {
-      name: "tamtam",
-      duration: "45mins",
-      ingredients: { water: "50mls", turtle: "200g", chicken: "11g", salt: "2pinch", peper: "1splash", tomatoes: "8", carots: "2"},
+      name: "Potato Doughnuts",
+      duration: "60mins",
+      ingredients: {"all-purpose flour": "4 c", "kosher salt": "1 tbsp", "baking powder": "1 tbsp", "ground nutmeg": "1 tsp", "large oranges": "2", "whole milk": "1/4 c", "unsalted butter": "1/4 c", "instant mashed potato flakes": "2/3 c", "eggs": "3", "sugar": "4/3 c", "pure vanilla extract": "1 tsp", "oil": "1", "flour":"1", "orange": "1 tbsp"},
       kcal: "950",
       difficulty: "medium"
         },
   recipe7: {
-      name: "Badoo",
-      duration: "45mins",
-      ingredients: { water: "100ml", bird: "200g", chicken: "150g", salt: "2pinch", peper: "1splash", tomatoes: "8", carots: "2"},
+      name: "Nutella Crepe Cake",
+      duration: "75mins",
+      ingredients: {butter: "6 tablespoons", "eggs": "4", "milk": "3/2 cups", "pumpkin puree": "3/4 cup", "all-purpose flour": "2 cups", "vanilla extract": "2 teaspoons", "cinnamon": "1 teaspoon", "salt": "1/2 teaspoons", "water": "1 cup", "nutella": "1 cup", "heavy whipping cream":"1 cup", "pure vanilla extract": "1 teaspoon", "pepitas toasted": "1/3 cup", "granulated sugar": "1 cup", "unsalted butter": "1 cup", "full fat canned coconut milk": "2/3 cup", "bourbon": "2 tablespoons", "flaky sea salt": "2/3 cup", "medjoor dates": "12 ounces", "dark chocolate": "6 ounces", "baking soda": "1 teaspoon", "baking powder": "2 teaspoons", "unsalted butter softened": "8 tablespoons", "brown sugarent": "1/2 cup", "eggs": "3", "flour": "3/2 cups"},
       kcal: "950",
       difficulty: "medium"
         }
@@ -144,6 +151,9 @@ function fromRecToShoppingUnits() {
       quantity === "1/2" ? quantity = "0.5"  : 1;
       quantity === "1/3" ? quantity = "0.33" : 1;
       quantity === "2/3" ? quantity = "0.66" : 1;
+      quantity === "4/3" ? quantity = "1.33" : 1;
+      quantity === "3/2" ? quantity = "1.50" : 1;
+      quantity === "5/2" ? quantity = "2.33" : 1;
       quantity === "1/4" ? quantity = "0.25" : 1;
       quantity === "3/4" ? quantity = "0.75" : 1;
       quantity === "1/5" ? quantity = "0.2"  : 1;

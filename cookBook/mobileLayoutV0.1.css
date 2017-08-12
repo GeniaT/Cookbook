@@ -17,7 +17,7 @@ body {
   height:auto;
 }
 .recipe {
-  height: auto 1s;
+  height: auto;
   width: 250px;
   border-radius: 0.5em;
   margin: 10px;
@@ -40,6 +40,9 @@ h2, .ingredients > p {
 img, button {
   width:100%;
   border-radius: 0.2em;
+}
+.collapsed > img {
+  height: 150px;
 }
 button {
   background-color: #fcfbe8;
@@ -127,7 +130,7 @@ button {
     width: 70%;
   }
   .ingredients, .recipe_ingredients > h3 {
-    margin-left: 25px;
+    /*margin-left: 25px;*/
   }
   .list {
     display:inline-block;
@@ -147,24 +150,18 @@ button {
   .expanded > .recImg, .expanded > .time_categories {
     width:35%;
   }
-  .expanded > h2 {
-    width:65%;
-    float:right;
-  }
-  .expanded > .description {
-    width:60%;
-    margin-top: -180px; /*not perfect but ok for the layout*/
-    float:right;
-  }
-  .expanded > .recipe_ingredients {
-    clear:both;
-  }
-  .expanded > .collapse {
-    margin:auto;
-    width: 55%;
-  }
-  .expanded p {
+  .expanded > .description, .expanded > h2 {
+    width: 60%;
     display:inline-block;
+    float: right;
+  }
+   .expanded > .recipe_ingredients {
+    text-align: center;
+    width: 35%;
+  }
+  .expanded > h2 {
+    position:relative;
+    top: 100px;
   }
 
   div#recipe2.expanded {
@@ -202,4 +199,15 @@ button {
   #recipe5  { order: 10; }
   #recipe6  { order: 11; }
   #recipe7  { order: 12; }
+}
+@media only screen and (min-width: 1540px) { /*to stick with 3 recipes by row*/
+  .recipe {
+    width: calc(100% * (1/4) - 10px - 1px);
+  }
+  .expanded {
+    width:100%;
+  }
+  .list {
+    max-width: 323px;
+  }
 }

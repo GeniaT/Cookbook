@@ -148,15 +148,9 @@ function fromRecToShoppingUnits() {
       let unit = result[2];
       let converted;
 
-      quantity === "1/2" ? quantity = "0.5"  : 1;
-      quantity === "1/3" ? quantity = "0.33" : 1;
-      quantity === "2/3" ? quantity = "0.66" : 1;
-      quantity === "4/3" ? quantity = "1.33" : 1;
-      quantity === "3/2" ? quantity = "1.50" : 1;
-      quantity === "5/2" ? quantity = "2.33" : 1;
-      quantity === "1/4" ? quantity = "0.25" : 1;
-      quantity === "3/4" ? quantity = "0.75" : 1;
-      quantity === "1/5" ? quantity = "0.2"  : 1;
+      if (quantity.indexOf("/") !== -1) {
+        quantity = quantity[0] / quantity[2];
+      }
       unit === undefined ? converted = quantity : 1;
       recUnitsInShopUnits[unit] === undefined ? converted = result[0] : 1;
 
